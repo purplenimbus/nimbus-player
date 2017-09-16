@@ -8,7 +8,6 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/uikit/css/uikit.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/css/uikit.min.css" />
@@ -25,22 +24,33 @@
     <!-- Add your site or application content here -->
 
     <div class="uk-offcanvas-content">
-	<div class="uk-position-top">
-        <nav class="uk-navbar-container uk-navbar-transparent " uk-navbar>
-      <div class="uk-navbar-left">
-          <ul class="uk-navbar-nav uk-iconnav">
-                <li><a href="" uk-icon="icon: user"></a></li>
-        </ul>
-        </div>
-        <div class="uk-navbar-right">
-          <ul class="uk-navbar-nav uk-iconnav">
-                <li><a href="" uk-icon="icon: search"></a></li>
-        </ul>
-        </div>
-    </nav>
-    </div>
-    <div ng-view=""></div>
-	
+		
+			
+		<div class="uk-height-viewport">
+			
+			<div class="uk-position-top">
+				<nav class="uk-navbar-container uk-navbar-transparent " uk-navbar>
+					<div class="uk-navbar-left">
+						<ul class="uk-navbar-nav uk-iconnav">
+							<li><a href="" uk-icon="icon: user"></a></li>
+						</ul>
+					</div>
+					<div class="uk-navbar-right">
+						<ul class="uk-navbar-nav uk-iconnav">
+							<li><a href="" uk-icon="icon: search"></a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		
+			<img class="background" src="{{ player.songs[player.currentSong].image }}" alt="">
+			
+			<div class="uk-overlay-default uk-position-cover"></div>
+			  
+			
+			<div ng-view=""></div>
+		
+		</div>
 	</div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -64,7 +74,6 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/uikit/js/uikit.min.js"></script>
     <script src="bower_components/howler.js/dist/howler.js"></script>
     <!-- endbower -->
     <!-- endbuild -->

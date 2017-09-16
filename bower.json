@@ -9,8 +9,8 @@
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "uikit": "git://github.com/uikit/uikit.git#^2.27.4",
-    "howler.js": "howler#^2.0.4"
+    "howler.js": "howler#^2.0.4",
+    "jquery": "^3.2.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

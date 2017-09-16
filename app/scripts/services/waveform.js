@@ -8,8 +8,8 @@
  * Service in the nimbusPlayerApp.
  */
 angular.module('nimbusPlayerApp')
-  .service('waveForm', function () {
-    this.waveForm = function($window){
+  .service('waveForm', function ($window) {
+    this.waveForm = function(){
 		var waveform = $window.WaveSurfer.create({
 			container: '#waveform',
 			waveColor: 'violet',
