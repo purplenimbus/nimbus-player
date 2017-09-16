@@ -1,0 +1,186 @@
+section {
+  nav{
+    z-index:1000;
+  }
+  background: black;
+  .player {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    max-height: 100vh;
+    overflow: hidden;
+    height: 100vh;
+    #player-wave{
+      width: 100%;
+			height: 200px;
+			display: block;
+			margin: 0 auto;
+			position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    }
+    img.background {
+      -webkit-filter: blur(6px); /* Safari 6.0 - 9.0 */
+      filter: blur(6px);
+      width: 100%;
+    }
+    .song-info {
+      position: relative;
+      img{
+        width:250px;
+      }
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        bottom: 0px;
+        background: rgba(black, 0.6);
+        z-index: 1000;
+        display: none;
+        .share {
+        }
+      }
+      &:hover {
+        .overlay {
+          display: block;
+          .share {
+            display: flex;
+          }
+        }
+      }
+    }
+    .player-controls{
+      margin: 0px;
+      padding: 20px 0;
+      li {
+        float: none;
+        margin: 0px auto;
+        color: white;
+        a {
+          color: inherit;
+        }
+      }
+    }
+  }
+  .playlist{
+	margin:0px 20px;
+    //margin:0 20px;
+      max-height: 25vh;
+      overflow-y: auto;
+    ul.song-list{
+      li.song{
+        
+        .title{
+         color:inherit;
+		  a{
+			color:inherit;
+		  }
+        }
+        .controls{
+          margin:0px;
+          li{
+            position:relative;
+            .playing {
+              /*position: absolute;
+              right: 5%;
+              top: 50%;
+              margin: -20px auto;
+              width: 55px;*/
+              height: 20px;
+              /*text-align: center;
+              font-size: 10px;*/
+              -webkit-transition: all 0.2s ease;
+              transition: all 0.2s ease;
+              display: none;
+              
+              /*line-height: 0;
+              transform: translate(25%,50%);
+              vertical-align: middle;*/
+              div {
+                background-color: white;
+                height: 100%;
+                width: 1px;
+                display: inline-block;
+                -webkit-transition: all 0.2s ease;
+                transition: all 0.2s ease;
+                -webkit-animation: wavy 1s ease infinite forwards;
+                animation: wavy 1s ease infinite forwards;
+                -webkit-transform-origin: 50% 50%;
+                transform-origin: 50% 50%;
+                box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.33);
+              }
+              .rect2 {
+                -webkit-animation-delay: 0.25s;
+                animation-delay: 0.25s;
+              }
+
+              .rect3 {
+                -webkit-animation-delay: 0.5s;
+                animation-delay: 0.5s;
+              }
+
+              .rect4 {
+                -webkit-animation-delay: 0.75s;
+                animation-delay: 0.75s;
+              }
+
+              .rect5 {
+                -webkit-animation-delay: 1.0s;
+                animation-delay: 1.0s;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    @-webkit-keyframes wavy {
+      0% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+      }
+      50% {
+        -webkit-transform: scaleY(0.6);
+        transform: scaleY(0.6);
+      }
+      100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+      }
+    }
+    @keyframes wavy {
+      0% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+      }
+      50% {
+        -webkit-transform: scaleY(0.6);
+        transform: scaleY(0.6);
+      }
+      100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+      }
+    }
+  }
+}
+//scroll bar
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: lightgrey;
+}
