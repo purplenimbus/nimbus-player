@@ -14,7 +14,7 @@ angular.module('nimbusPlayerApp')
 	  this.search = function(query){
 		console.log('genius query',query);
 		var data = false;
-		$http.defaults.headers.common['Authorization'] = 'Bearer ' + this.token;
+		$http.defaults.headers.common.Authorization = 'Bearer ' + this.token;
 		
 		var url = this.endpoint+'search?q='+encodeURIComponent(query.toLowerCase())+'&access_token='+this.token;
 		
@@ -31,5 +31,5 @@ angular.module('nimbusPlayerApp')
 		});
 		return data;
 		
-	  }
+	  };
   });

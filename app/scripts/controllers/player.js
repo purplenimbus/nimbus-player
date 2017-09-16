@@ -8,10 +8,9 @@
  * Controller of the nimbusPlayerApp
  */
 angular.module('nimbusPlayerApp')
-  .controller('PlayerCtrl', function ($scope,wave,music,waveForm,genius) {
+  .controller('PlayerCtrl', function ($scope,wave,music,waveForm,genius,$window,artist) {
     $scope.playing = false;
-    var songs = music.songs();
-
+	
     $scope.player = {
       currentSong: 0,
 	  currentTime: 0,
@@ -23,7 +22,7 @@ angular.module('nimbusPlayerApp')
       $scope.player.wave.stop();
       console.log('Playing?',$scope.playing);
 		//stop current song
-		$scope.playing ? $scope.stopSong() : null;
+		if($scope.playing){ $scope.stopSong(); }
 		//move pointer
 		$scope.player.currentSong -= 1;
 		//play song
@@ -35,7 +34,7 @@ angular.module('nimbusPlayerApp')
       $scope.player.wave.stop();
       console.log('Playing?',$scope.playing);
 		//stop current song
-		$scope.playing ? $scope.stopSong() : null;
+		if($scope.playing){ $scope.stopSong(); }
 		//move pointer
 		$scope.player.currentSong += 1;
 		//play song
@@ -44,7 +43,7 @@ angular.module('nimbusPlayerApp')
 
     $scope.playSong = function(index) {
 	
-		console.log("index",index);
+		console.log('index',index);
       
 		//stop current song
 		if($scope.playing){
@@ -52,7 +51,7 @@ angular.module('nimbusPlayerApp')
 				console.log('same song playing paused!');
 				$scope.pauseSong();
 			}else{
-				console.log('diffrent song playing stopped!')
+				console.log('diffrent song playing stopped!');
 				$scope.stopSong();
 				//play new index
 				$scope.player.songs[index].howler.play();
@@ -77,7 +76,7 @@ angular.module('nimbusPlayerApp')
       
     };
     $scope.stopSong = function() {
-      console.log("pauseSong");
+      console.log('pauseSong');
       //$scope.pauseTimer();
       $scope.playing = false;
       $scope.player.songs[$scope.player.currentSong].howler.stop();
@@ -87,7 +86,7 @@ angular.module('nimbusPlayerApp')
     };
   
 	$scope.pauseSong = function() {
-      console.log("pauseSong");
+      console.log('pauseSong');
       //$scope.pauseTimer();
       $scope.playing = false;
       $scope.player.songs[$scope.player.currentSong].howler.pause();
@@ -122,20 +121,20 @@ angular.module('nimbusPlayerApp')
 
 	$scope.playerInit = function(){
 		//init howler;
-		$scope.player.songs = music.initHowl(songs,$scope);
+		$scope.player.songs = music.initHowl(music.songs(),$scope);
     
 		$scope.player.wave = wave.initWave($scope);
 	
 		//$scope.player.currentSong = 0;
-		//console.log($scope.player.songs[0]);
+		console.log('Songs',$scope.player.songs);
     
-    $scope.offCanvas = UIkit.offcanvas('#off-canvas');
+    $scope.offCanvas = $window.UIkit.offcanvas('#off-canvas');
 		
-	angular.element('#off-canvas').on('hidden',function(e){
+	angular.element('#off-canvas').on('hidden',function(){
 		$scope.resetOffCanvas();
 	});
     
-	}
+	};
 	
 	$scope.resetOffCanvas = function(){
 		
@@ -144,7 +143,7 @@ angular.module('nimbusPlayerApp')
 		$scope.offCanvas.title = false;
 		
 		console.log('offcanvas reset');
-	}
+	};
 	
 	$scope.playerInit();
 	
@@ -162,7 +161,7 @@ angular.module('nimbusPlayerApp')
     } else{
       $scope.offCanvas.description = 'no information found';
     }
-  }
+  };
   
   $scope.showPlaylist = function(){
 	
@@ -174,7 +173,7 @@ angular.module('nimbusPlayerApp')
     
     $scope.playlist = true;
 	
-  }
+  };
   /*
 	$scope.$watch('player.currentTime', function(newValue, oldValue) {
 	  console.log('New:',newValue,'old:',oldValue);

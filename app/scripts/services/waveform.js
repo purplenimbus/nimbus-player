@@ -9,13 +9,13 @@
  */
 angular.module('nimbusPlayerApp')
   .service('waveForm', function () {
-    this.waveForm = function(){
-		var waveform = WaveSurfer.create({
+    this.waveForm = function($window){
+		var waveform = $window.WaveSurfer.create({
 			container: '#waveform',
 			waveColor: 'violet',
 			progressColor: 'purple'
 		});
 		
 		return waveform;
-	  }
+	};
   });

@@ -9,17 +9,15 @@
  */
 angular.module('nimbusPlayerApp')
   .service('artist', function ($http,genius) {
-      this.getInfo = function(id,name,$scope){
-		console.log('getInfo',id,name)
-		;
+      this.getInfo = function(id,name){
+		console.log('getInfo',id,name);
 
-		 var info = false;
+		var info = false;
 		
 		var data = genius.search(name);
 		
-		console.log('getInfo search',data)
-		;
-		
+		console.log('getInfo search',data);
+				
 		return info;
 	  };
   });
