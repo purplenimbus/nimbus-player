@@ -92,8 +92,14 @@
          <!-- This is the off-canvas -->
          <div id="off-canvas" uk-offcanvas="overlay: true">
             <div class="uk-offcanvas-bar">
-               <button class="uk-offcanvas-close" type="button" uk-close></button>
-               <h3>{{ offCanvas.title | uppercase }}</h3>
+				<button class="uk-offcanvas-close" type="button" uk-close></button>
+				<h3>{{ offCanvas.title | uppercase }}</h3>
+			   
+				<div class="uk-inline uk-width-1-1" ng-if="offCanvas.search">
+					<a class="uk-form-icon uk-form-icon-flip" href="" uk-icon="icon: search"></a>
+					<input class="uk-input" ng-model="$scope.search">
+				</div>
+
                <div class="playlist" ng-if="playlist">
                   <ul class="uk-list uk-list-divider song-list">
                      <li class="uk-clearfix song" ng-repeat="song in player.songs">
@@ -119,7 +125,49 @@
                      </li>
                   </ul>
                </div>
+			   
                <p ng-if="offCanvas.description">{{ offCanvas.description }}</p>
+			   
+			   <ul uk-accordion ng-if="offCanvas.profile && loggedin">
+					<li class="uk-open">
+						<h3 class="uk-accordion-title">Item 1</h3>
+						<div class="uk-accordion-content">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
+					</li>
+					<li>
+						<h3 class="uk-accordion-title">Item 2</h3>
+						<div class="uk-accordion-content">
+							<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor reprehenderit.</p>
+						</div>
+					</li>
+					<li>
+						<h3 class="uk-accordion-title">Item 3</h3>
+						<div class="uk-accordion-content">
+							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat proident.</p>
+						</div>
+					</li>
+				</ul>
+				
+				<form ng-if="offCanvas.profile && !loggedin" class="uk-form-stacked">
+					<div class="uk-margin">
+						<div class="uk-inline uk-width-1-1">
+							<a class="uk-form-icon uk-form-icon-flip" href="" uk-icon="icon: user"></a>
+							<input type="text" class="uk-input" ng-model="username">
+						</div>
+					</div>
+					<div class="uk-margin">
+						<div class="uk-inline uk-width-1-1">
+							<a class="uk-form-icon uk-form-icon-flip" href="" uk-icon="icon: lock"></a>
+							<input type="password" class="uk-input" ng-model="password">
+						</div>
+					</div>
+					<div class="uk-margin">
+						<div class="uk-inline uk-width-1-1">
+							<button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" ng-click="login({ username:this.username , password: this.password })"><span uk-icon="icon: sign-in"></span> login</button>
+						</div>
+					</div>
+				</form>
             </div>
          </div>
       </div>
