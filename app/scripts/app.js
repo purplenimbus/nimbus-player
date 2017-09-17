@@ -27,4 +27,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }).run(function($http,genius) {
+	  $http.defaults.headers.common.Authorization = 'Bearer ' + genius.token;
+	});

@@ -8,7 +8,7 @@
  * Controller of the nimbusPlayerApp
  */
 angular.module('nimbusPlayerApp')
-  .controller('PlayerCtrl', function ($scope,wave,music,waveForm,genius,artist) {
+  .controller('PlayerCtrl', function ($scope,wave,music,waveForm,genius,artist,$window) {
 	
 	$scope.player = {
 	  currentSong: 0,
@@ -42,10 +42,6 @@ angular.module('nimbusPlayerApp')
     };
 
     $scope.playSong = function(index) {
-		
-		if(!index || index == 'undefined'){
-			index = 0;
-		}
 		
 		console.log('index',index);
       
@@ -114,7 +110,7 @@ angular.module('nimbusPlayerApp')
 	
 		$scope.player.currentSong = 0;
     
-		$scope.offCanvas = UIkit.offcanvas('#off-canvas');
+		$scope.offCanvas = $window.UIkit.offcanvas('#off-canvas');
 			
 		angular.element('#off-canvas').on('hidden',function(){
 			$scope.resetOffCanvas();

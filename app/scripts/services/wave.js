@@ -13,7 +13,7 @@ angular.module('nimbusPlayerApp')
 		
 		console.log('wave init',angular.element('#player-wave').get(0));
 		
-		var siriWave = new SiriWave({
+		var siriWave = new $window.SiriWave({
 			container: angular.element('#player-wave').get(0),
 			width: 640,
 			height: 200,
