@@ -25,32 +25,8 @@
 
     <div class="uk-offcanvas-content">
 		
-			
-		<div class="uk-height-viewport">
-			
-			<div class="uk-position-top">
-				<nav class="uk-navbar-container uk-navbar-transparent " uk-navbar>
-					<div class="uk-navbar-left">
-						<ul class="uk-navbar-nav uk-iconnav">
-							<li><a href="" uk-icon="icon: user"></a></li>
-						</ul>
-					</div>
-					<div class="uk-navbar-right">
-						<ul class="uk-navbar-nav uk-iconnav">
-							<li><a href="" uk-icon="icon: search"></a></li>
-						</ul>
-					</div>
-				</nav>
-			</div>
+		<div ng-view=""></div>
 		
-			<img class="background" src="{{ player.songs[player.currentSong].image }}" alt="">
-			
-			<div class="uk-overlay-default uk-position-cover"></div>
-			  
-			
-			<div ng-view=""></div>
-		
-		</div>
 	</div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -91,7 +67,6 @@
         <!-- endbuild -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.30/js/uikit-icons.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/siriwavejs@2.0.2/siriwave.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
 </body>

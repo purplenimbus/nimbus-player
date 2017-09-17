@@ -12,8 +12,7 @@ angular.module('nimbusPlayerApp')
 	  
     this.songArray = [];
 	
-	this.songs = function(){
-		return [
+	this.songs = [
 		  {
 			name: 'bodak yellow',
 			artist: { id: 99, name: 'Cardi B' },
@@ -138,7 +137,6 @@ angular.module('nimbusPlayerApp')
 			}
 		  }
 		];
-	};
 
     this.howl = [];
 

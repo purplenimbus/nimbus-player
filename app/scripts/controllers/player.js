@@ -8,15 +8,15 @@
  * Controller of the nimbusPlayerApp
  */
 angular.module('nimbusPlayerApp')
-  .controller('PlayerCtrl', function ($scope,wave,music,waveForm,genius,$window,artist) {
-    $scope.playing = false;
+  .controller('PlayerCtrl', function ($scope,wave,music,waveForm,genius,artist) {
 	
-    $scope.player = {
-      currentSong: 0,
+	$scope.player = {
+	  currentSong: 0,
 	  currentTime: 0,
-      playlist: $scope.songs
-    };
-
+	  playlist: music.songs
+	};
+	
+	
     $scope.prevSong = function() {
 		
       $scope.player.wave.stop();
@@ -42,7 +42,11 @@ angular.module('nimbusPlayerApp')
     };
 
     $scope.playSong = function(index) {
-	
+		
+		if(!index || index == 'undefined'){
+			index = 0;
+		}
+		
 		console.log('index',index);
       
 		//stop current song
@@ -77,7 +81,6 @@ angular.module('nimbusPlayerApp')
     };
     $scope.stopSong = function() {
       console.log('pauseSong');
-      //$scope.pauseTimer();
       $scope.playing = false;
       $scope.player.songs[$scope.player.currentSong].howler.stop();
 	  $scope.player.currentTime = 0;
@@ -87,52 +90,38 @@ angular.module('nimbusPlayerApp')
   
 	$scope.pauseSong = function() {
       console.log('pauseSong');
-      //$scope.pauseTimer();
       $scope.playing = false;
       $scope.player.songs[$scope.player.currentSong].howler.pause();
     
     $scope.player.wave.stop();
     
     };
-  /*
-  $scope.updateTimer = function(){
-     console.log('updating timer',$scope.player.currentTime);
-      $scope.player.currentTime++;
-  };
-  
-  var timer = false;
-  
-  $scope.startTimer  = function(maxTime){
-    console.log('startTimer');
-   timer = $interval($scope.updateTimer,maxTime);
-  }
-  
-  $scope.pauseTimer = function(){
-    console.log('timerPaused');
-    $interval.cancel(timer);
-  }
-  
-  $scope.resetTimer = function(){
-    console.log('timerReset');
-    $interval.cancel(timer);
-    $scope.player.currentTime = 0;
-  }
-  */
 
 	$scope.playerInit = function(){
 		//init howler;
-		$scope.player.songs = music.initHowl(music.songs(),$scope);
+		
+		$scope.playing = false;
+	
+		$scope.player = {
+		  /*currentSong: 0,
+		  currentTime: 0,
+		  playlist: music.songs()*/
+		};
+	
+		$scope.player.songs = music.initHowl(music.songs,$scope);
     
 		$scope.player.wave = wave.initWave($scope);
 	
-		//$scope.player.currentSong = 0;
-		console.log('Songs',$scope.player.songs);
+		$scope.player.currentSong = 0;
     
-    $scope.offCanvas = $window.UIkit.offcanvas('#off-canvas');
-		
-	angular.element('#off-canvas').on('hidden',function(){
-		$scope.resetOffCanvas();
-	});
+		$scope.offCanvas = UIkit.offcanvas('#off-canvas');
+			
+		angular.element('#off-canvas').on('hidden',function(){
+			$scope.resetOffCanvas();
+		});
+
+		console.log('Songs',$scope);
+
     
 	};
 	
@@ -145,38 +134,32 @@ angular.module('nimbusPlayerApp')
 		console.log('offcanvas reset');
 	};
 	
-	$scope.playerInit();
-	
-  console.log($scope);
-  
-  $scope.getInfo = function(id,name){
-    $scope.offCanvas.show();
-    
-    var info = artist.getInfo(id,name,$scope);
-        
-    $scope.offCanvas.title = name;
-    
-    if(info.status === 200){
-      $scope.offCanvas.description = info.data;
-    } else{
-      $scope.offCanvas.description = 'no information found';
-    }
-  };
-  
-  $scope.showPlaylist = function(){
-	
-	console.log('show playlist');
-	
-    $scope.offCanvas.show();
-    
-    $scope.offCanvas.title = name;
-    
-    $scope.playlist = true;
-	
-  };
-  /*
-	$scope.$watch('player.currentTime', function(newValue, oldValue) {
-	  console.log('New:',newValue,'old:',oldValue);
 	  
-	});*/
+	  $scope.getInfo = function(id,name){
+		$scope.offCanvas.show();
+		
+		var info = artist.getInfo(id,name,$scope);
+			
+		$scope.offCanvas.title = name;
+		
+		if(info.status === 200){
+		  $scope.offCanvas.description = info.data;
+		} else{
+		  $scope.offCanvas.description = 'no information found';
+		}
+	  };
+	  
+	  $scope.showPlaylist = function(){
+		
+		console.log('show playlist',$scope);
+		
+		$scope.offCanvas.show();
+		
+		$scope.offCanvas.title = name;
+		
+		$scope.playlist = true;
+		
+	  };
+
+		$scope.playerInit();
   });
