@@ -156,6 +156,30 @@ angular.module('nimbusPlayerApp')
 		$scope.playlist = true;
 		
 	  };
+	  
+		$scope.showProfile = function(){
+		
+			console.log('show profile',$scope);
+		
+			$scope.offCanvas.show();
+		
+			$scope.offCanvas.title = 'account';
+		
+			$scope.profile = true;
+		
+		};
+		
+		$scope.showSearch = function(term){
+		
+			console.log('show search , term:',term);
+		
+			$scope.offCanvas.show();
+		
+			$scope.offCanvas.title = 'Search';
+		
+			$scope.search = true;
+		
+		};
 
 		$scope.playerInit();
   });
